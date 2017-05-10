@@ -20,7 +20,9 @@
         <h3>{{ thing.name }}</h3>
         <p>
           {{ thing.location }}
+          {{ thing._id }}
         </p>
+          <button ng-click='wmp.deleteRecords(thing._id)' data-id={{thing._id}} >Delete</button>
       </div>
     </div>
     </div>

@@ -30,9 +30,12 @@ app.get( '/getRecords', function( req, res ){
   });
 });
 
-app.listen( 8080, 'localhost', function( req, res ){
-  console.log( 'listening on 8080' );
+app.get( '/deleteRecords/:id', function( req, res ){
+  console.log(req.params.id);
+  ourModels.remove({ _id: req.params.id }).then( function(){
+    res.sendStatus( 200 );
   });
+});
 
 
 app.post( '/testPost', function( req, res ){
@@ -49,3 +52,7 @@ app.post( '/testPost', function( req, res ){
       res.sendStatus( 200 );
     });
   });
+
+  app.listen( 8080, 'localhost', function( req, res ){
+    console.log( 'listening on 8080' );
+    });

@@ -34,4 +34,16 @@ myApp.controller('WhereMyPeeps', function($http) {
       // };//end myError
     }); //end getRecords
   };
+
+  vm.deleteRecords = function(id) {
+    $http({
+      method: 'GET',
+      url: '/deleteRecords/'+id,
+    }).then(function success(response) {
+      vm.getRecords();
+      // }), function myError( response ){
+      // console.log( response.statusText );
+      // };//end myError
+    }); //end getRecords
+  };
 });
