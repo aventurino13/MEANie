@@ -1,37 +1,37 @@
-var myApp = angular.module( 'myApp', [] );
+var myApp = angular.module('myApp', []);
 
-myApp.controller( 'WhereMyPeeps', function( $http ){
+myApp.controller('WhereMyPeeps', function($http) {
 
   var vm = this;
 
- vm.addRecord = function(){
-    var objectToSend ={
-      name : vm.nameIn,
-      location : vm.locationIn,
-     };
+  vm.addRecord = function() {
+    var objectToSend = {
+      name: vm.nameIn,
+      location: vm.locationIn,
+    };
     $http({
       method: 'POST',
       url: '/testPost',
       data: objectToSend,
-      }).then( function( response ){
-          console.log(response);
-          vm.getRecords();
-      });
+    }).then(function(response) {
+      console.log(response);
+      vm.getRecords();
+    });
 
-      vm.nameIn ='';
-      vm.locationIn='';
-    };
+    vm.nameIn = '';
+    vm.locationIn = '';
+  };
 
-vm.getRecords = function(){
-  $http({
-    method: 'GET',
-    url: '/getRecords',
-  }).then( function success( response ){
-    vm.allTheRecords = response.data;
-    console.log( vm.allTheRecords );
-    // }), function myError( response ){
-    // console.log( response.statusText );
-    // };//end myError
-    });//end getRecords
+  vm.getRecords = function() {
+    $http({
+      method: 'GET',
+      url: '/getRecords',
+    }).then(function success(response) {
+      vm.allTheRecords = response.data;
+      console.log(vm.allTheRecords);
+      // }), function myError( response ){
+      // console.log( response.statusText );
+      // };//end myError
+    }); //end getRecords
   };
 });
